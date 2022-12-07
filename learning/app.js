@@ -1,29 +1,23 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const app = express();
+const PORT = 3000;
+const userRoutes = require('./routes/UserRoutes');
 
-// const sum  = require('./calc')
-// const name = require('./calc')
-// console.log(sum(1,2))
-// console.log(name)
-const http = require('http')
-const calc = require('./calc')
-const file = require('./filehandling/File1')
+app.use('/user',userRoutes);
+//db connection -> mongo db --> mongodb   / mongoose
+//localhost:3000/user/test
 
-// console.log(calc.sum(1,2))
-// console.log(calc.name)
-// console.log(calc.user.name)
-// console.log(calc.add(1,2,3))
-// console.log(calc.employee)
-//file.writeData()
-//file.readData()
-//file.deleteFile()
-//file.createFolder()
-//file.copyFile()
-//file.addJoson()
-file.readJson()
+mongoose.connect('mongodb://localhost:27017/nodeclub1',
+ {useNewUrlParser: true, useUnifiedTopology: true}
+).then(()=>{
+    console.log('DB CONNECTED');
+}).catch((err)=>{
+    console.log(err);
+})
 
-const PORT = 3000
-const server  = http.createServer()
-server.listen(PORT,()=>{
-    console.log(`Server is running on port ${PORT}`)
+app.listen(PORT,()=>{
+    console.log(`Server is running on port ${PORT}`);
 })
 
 
