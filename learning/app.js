@@ -7,8 +7,12 @@ app.use(express.urlencoded({extended:true}))
 
 const PORT = 3000;
 const userRoutes = require('./routes/UserRoutes');
+const departmentRoutes = require('./routes/DepartmentRoutes');
+const employeeRoutes = require('./routes/EmployeeRoutes');
 
 app.use('/user',userRoutes);
+app.use('/department',departmentRoutes);
+app.use('/employee',employeeRoutes);
 //db connection -> mongo db --> mongodb   / mongoose
 //localhost:3000/user/test
 
