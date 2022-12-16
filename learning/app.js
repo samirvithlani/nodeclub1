@@ -9,10 +9,14 @@ const PORT = 3000;
 const userRoutes = require('./routes/UserRoutes');
 const departmentRoutes = require('./routes/DepartmentRoutes');
 const employeeRoutes = require('./routes/EmployeeRoutes');
+const productRoutes = require('./routes/ProductRoutes');
+const cartRoutes = require('./routes/CartRoutes');
 
 app.use('/user',userRoutes);
 app.use('/department',departmentRoutes);
 app.use('/employee',employeeRoutes);
+app.use('/product',productRoutes);
+app.use('/cart',cartRoutes);
 //db connection -> mongo db --> mongodb   / mongoose
 //localhost:3000/user/test
 
