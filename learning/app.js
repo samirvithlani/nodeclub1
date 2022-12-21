@@ -11,12 +11,14 @@ const departmentRoutes = require('./routes/DepartmentRoutes');
 const employeeRoutes = require('./routes/EmployeeRoutes');
 const productRoutes = require('./routes/ProductRoutes');
 const cartRoutes = require('./routes/CartRoutes');
+const uploadRoutes = require('./routes/UploadRoutes');
 
 app.use('/user',userRoutes);
 app.use('/department',departmentRoutes);
 app.use('/employee',employeeRoutes);
 app.use('/product',productRoutes);
 app.use('/cart',cartRoutes);
+app.use('/upload',uploadRoutes);
 //db connection -> mongo db --> mongodb   / mongoose
 //localhost:3000/user/test
 
