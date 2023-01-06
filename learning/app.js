@@ -1,24 +1,28 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
+app.use(cors())
 
 const PORT = 3000;
-const userRoutes = require('./routes/UserRoutes');
-const departmentRoutes = require('./routes/DepartmentRoutes');
-const employeeRoutes = require('./routes/EmployeeRoutes');
-const productRoutes = require('./routes/ProductRoutes');
-const cartRoutes = require('./routes/CartRoutes');
-const uploadRoutes = require('./routes/UploadRoutes');
+// const userRoutes = require('./routes/UserRoutes');
+// const departmentRoutes = require('./routes/DepartmentRoutes');
+// const employeeRoutes = require('./routes/EmployeeRoutes');
+// const productRoutes = require('./routes/ProductRoutes');
+// const cartRoutes = require('./routes/CartRoutes');
+// const uploadRoutes = require('./routes/UploadRoutes');
+const studentRoutes = require('./routes/StudentRoutes');
 
-app.use('/user',userRoutes);
-app.use('/department',departmentRoutes);
-app.use('/employee',employeeRoutes);
-app.use('/product',productRoutes);
-app.use('/cart',cartRoutes);
-app.use('/upload',uploadRoutes);
+// app.use('/user',userRoutes);
+// app.use('/department',departmentRoutes);
+// app.use('/employee',employeeRoutes);
+// app.use('/product',productRoutes);
+// app.use('/cart',cartRoutes);
+// app.use('/upload',uploadRoutes);
+app.use('/student',studentRoutes);
 //db connection -> mongo db --> mongodb   / mongoose
 //localhost:3000/user/test
 
