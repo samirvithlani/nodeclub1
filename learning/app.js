@@ -15,7 +15,9 @@ const PORT = 3000;
 // const cartRoutes = require('./routes/CartRoutes');
 // const uploadRoutes = require('./routes/UploadRoutes');
 const studentRoutes = require('./routes/StudentRoutes');
-
+const studentTypeRoutes = require('./routes/StudentTypeRoutes');
+const examRoutes = require('./routes/ExamRoutes');
+const studentExamRoutes = require('./routes/StudentExamRoutes');
 // app.use('/user',userRoutes);
 // app.use('/department',departmentRoutes);
 // app.use('/employee',employeeRoutes);
@@ -23,6 +25,9 @@ const studentRoutes = require('./routes/StudentRoutes');
 // app.use('/cart',cartRoutes);
 // app.use('/upload',uploadRoutes);
 app.use('/student',studentRoutes);
+app.use('/studentType',studentTypeRoutes);
+app.use('/exam',examRoutes);
+app.use('/studentexam',studentExamRoutes);
 //db connection -> mongo db --> mongodb   / mongoose
 //localhost:3000/user/test
 

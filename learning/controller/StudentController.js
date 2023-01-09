@@ -23,23 +23,45 @@ const addStudent = (req, res) => {
 }
 
 
+// const getAllStudents = (req,res)=>{
+
+//     StudentSchema.find((err,data)=>{
+
+//         if(err){
+//             res.status(500).json({
+//                 message: "Some error occurred while retrieving students.",
+//                 error: err.message
+//             })
+//         }
+//         else{
+//             res.status(200).json({
+//                 message: "Students retrieved successfully",
+//                 data: data
+//             })
+//         }
+//     })
+
+// }
+
 const getAllStudents = (req,res)=>{
 
-    StudentSchema.find((err,data)=>{
+        StudentSchema.find({type:"63bbf4a78ae2b82963967b8f"}).populate('type').exec((err,data)=>{
 
-        if(err){
-            res.status(500).json({
-                message: "Some error occurred while retrieving students.",
-                error: err.message
-            })
-        }
-        else{
-            res.status(200).json({
-                message: "Students retrieved successfully",
-                data: data
-            })
-        }
-    })
+            if(err){
+                res.status(500).json({
+                    message: "Some error occurred while retrieving students.",
+                    error: err.message
+                })
+            }
+            else{
+                res.status(200).json({
+                    message: "Students retrieved successfully",
+                    data: data
+                })
+            }
+
+        })
+
 
 }
 const studentGetById = (req,res)=>{

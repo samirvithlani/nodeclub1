@@ -19,7 +19,11 @@ const StudentSchema = new Schema(
     },
     age:{
         type: Number,
-    }
+    },
+    type:[{
+        type: Schema.Types.ObjectId,
+        ref: 'StudentType'
+    }]
 },
 {
     timestamps: true
