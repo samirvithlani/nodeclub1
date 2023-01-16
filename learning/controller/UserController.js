@@ -1,5 +1,7 @@
 const { model } = require('mongoose');
+
 const userSchema = require('../model/UserSchema');
+const {hashPassword1,comparePassword1} = require('../util/Encrypt');
 //req,res
 module.exports.testUser =((req,res)=>{
     console.log('testUser');
@@ -23,11 +25,19 @@ module.exports.getAllUsers = ((req,res)=>{
     })
     
 })
-module.exports.creteUser = ((req,res)=>{
+module.exports.creteUser = async(req,res)=>{
 
     //create user object
     console.log("req body",req.body);
-    var user = new userSchema(req.body)
+    const hashedPassword = await hashPassword1(req.body.password);
+    console.log("hashedPassword",hashedPassword);
+    var userData = {
+        name:req.body.name,
+        email:req.body.email,
+        password:hashedPassword,
+        age:req.body.age
+    }
+    var user = new userSchema(userData)
     user.save((err,data)=>{
         if(err){
             res.status(500).json({
@@ -41,7 +51,7 @@ module.exports.creteUser = ((req,res)=>{
             })
         }
     })
-})
+}
 
 exports.deleteUser = ((req,res)=>{
 
@@ -121,3 +131,43 @@ exports.updateUser = ((req,res)=>{
         }
     })
 })
+
+exports.loginUser = async(req,res)=>{
+
+        var email = req.body.email;
+        var password = req.body.password;
+
+        userSchema.findOne({email:email},(err,data)=>{
+            if(err){
+                  res.status(500).json({
+                    message:"error",
+                  })  
+
+            }
+            else{
+                if(data){
+                    comparePassword1(password,data.password).then((result)=>{
+
+                            if(result){
+                                res.status(200).json({
+                                    message:"success",
+                                    data:data
+                                })
+                            }
+                            else{
+                                res.status(401).json({
+                                    message:"unauthorized",
+                                })
+                            }
+                    })
+                }
+                else{
+                    res.status(404).json({
+                        message:"not found",
+                    })
+                }
+            }
+        })
+
+
+}

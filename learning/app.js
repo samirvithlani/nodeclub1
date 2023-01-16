@@ -8,7 +8,7 @@ app.use(express.urlencoded({extended:true}))
 app.use(cors())
 
 const PORT = 3000;
-// const userRoutes = require('./routes/UserRoutes');
+ const userRoutes = require('./routes/UserRoutes');
 // const departmentRoutes = require('./routes/DepartmentRoutes');
 // const employeeRoutes = require('./routes/EmployeeRoutes');
  const productRoutes = require('./routes/ProductRoutes');
@@ -18,7 +18,7 @@ const studentRoutes = require('./routes/StudentRoutes');
 const studentTypeRoutes = require('./routes/StudentTypeRoutes');
 const examRoutes = require('./routes/ExamRoutes');
 const studentExamRoutes = require('./routes/StudentExamRoutes');
-// app.use('/user',userRoutes);
+app.use('/user',userRoutes);
 // app.use('/department',departmentRoutes);
 // app.use('/employee',employeeRoutes);
 app.use('/product',productRoutes);
