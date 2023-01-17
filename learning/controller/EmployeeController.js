@@ -18,7 +18,7 @@ exports.addEmployee = (req,res)=>{
 }
 exports.getEmployees = (req,res)=>{
 
-    employeeSchema.find().populate('department').exec((err,data)=>{
+    employeeSchema.find().exec((err,data)=>{
         if(err){
             res.status(500).json({
                 message: "Some error occurred while retrieving the employees.",

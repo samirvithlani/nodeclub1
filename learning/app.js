@@ -9,8 +9,8 @@ app.use(cors())
 
 const PORT = 3000;
  const userRoutes = require('./routes/UserRoutes');
-// const departmentRoutes = require('./routes/DepartmentRoutes');
-// const employeeRoutes = require('./routes/EmployeeRoutes');
+const departmentRoutes = require('./routes/DepartmentRoutes');
+const employeeRoutes = require('./routes/EmployeeRoutes');
  const productRoutes = require('./routes/ProductRoutes');
 // const cartRoutes = require('./routes/CartRoutes');
 // const uploadRoutes = require('./routes/UploadRoutes');
@@ -19,8 +19,8 @@ const studentTypeRoutes = require('./routes/StudentTypeRoutes');
 const examRoutes = require('./routes/ExamRoutes');
 const studentExamRoutes = require('./routes/StudentExamRoutes');
 app.use('/user',userRoutes);
-// app.use('/department',departmentRoutes);
-// app.use('/employee',employeeRoutes);
+app.use('/department',departmentRoutes);
+app.use('/employee',employeeRoutes);
 app.use('/product',productRoutes);
 // app.use('/cart',cartRoutes);
 // app.use('/upload',uploadRoutes);
