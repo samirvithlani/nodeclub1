@@ -4,3 +4,8 @@ https://www.mockaroo.com/
 //gender male / female
 
 //KAHAN JUHI
+
+
+//user register ---> email ---> otp sent -> 4122
+enter otp ---> 4122 db add...
+

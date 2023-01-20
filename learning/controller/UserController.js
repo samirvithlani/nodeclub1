@@ -2,6 +2,8 @@ const { model } = require('mongoose');
 
 const userSchema = require('../model/UserSchema');
 const {hashPassword1,comparePassword1} = require('../util/Encrypt');
+
+const mailer = require('../util/mailer');
 //req,res
 module.exports.testUser =((req,res)=>{
     console.log('testUser');
@@ -45,6 +47,8 @@ module.exports.creteUser = async(req,res)=>{
             })
         }
         else{
+
+            mailer.sendMail(data.email);
             res.status(201).json({
                 message:"success",
                 data:data
