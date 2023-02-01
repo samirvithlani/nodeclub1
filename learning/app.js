@@ -33,7 +33,7 @@ app.use('/studentexam',studentExamRoutes);
 require('dotenv').config();
 const PORT = process.env.PORT || 3000;
 
-mongoose.connect('mongodb://127.0.0.1:27017/nodeclub1',
+mongoose.connect('mongodb+srv://samir:samir@cluster0.key63fx.mongodb.net/nodeclub1?retryWrites=true&w=majority',
  {useNewUrlParser: true, useUnifiedTopology: true}
 ).then(()=>{
     console.log('DB CONNECTED');
