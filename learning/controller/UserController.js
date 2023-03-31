@@ -2,6 +2,63 @@ const { model } = require('mongoose');
 
 const userSchema = require('../model/UserSchema');
 const {hashPassword1,comparePassword1} = require('../util/Encrypt');
+const authToken = require('../util/AuthToken');
+const AuthSchema = require('../model/AuthSchema');
+
+
+
+
+
+exports.createAuthUser = async(req,res)=>{
+    
+    const hashedPassword = await hashPassword1(req.body.password);
+    console.log("hashedPassword",hashedPassword);
+    var userData = {
+        name:req.body.name,
+        email:req.body.email,
+        password:hashedPassword,
+        age:req.body.age
+    }
+    var user = new userSchema(userData)
+    user.save(async(err,data)=>{
+        if(err){
+            res.status(500).json({
+                message:"error",
+
+            })
+        }
+        else{
+            console.log("data",data)
+            const token = await authToken.generateToken(data);
+            //token /// da USER ID -->
+            var authData = {
+                userId:data._id,
+                token:token
+            }
+            var auth = new AuthSchema(authData);
+            auth.save((err,data)=>{
+                if(err){
+                    res.status(500).json({
+                        message:"error",
+                    })
+                }
+                else{
+                    res.status(201).json({
+                        message:"success",
+                        token:token
+                    })
+                }
+            })      
+        }
+    })
+    
+}
+
+
+
+
+
+
 
 const mailer = require('../util/mailer');
 //req,res
